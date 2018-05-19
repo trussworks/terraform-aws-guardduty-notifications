@@ -1,3 +1,4 @@
+<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 Enable AWS GuardDuty and configures any findings to be sent to and SNS topic.
 
 Creates the following resources:
@@ -23,3 +24,4 @@ module "guardduty_notifications" {
 |------|-------------|:----:|:-----:|:-----:|
 | sns_topic_name | The name of the SNS topic to send AWS GuardDuty findings. | string | - | yes |
 
+<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
