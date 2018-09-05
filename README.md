@@ -25,3 +25,4 @@ module "guardduty_notifications" {
 | sns_topic_name | The name of the SNS topic to send AWS GuardDuty findings. | string | - | yes |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+
