@@ -11,7 +11,7 @@
  *
  * ```hcl
  * module "guardduty_notifications" {
- *   source = "../../modules/aws-guardduty-notifications"
+ *   source = "trussworks/guardduty-notifications/aws"
  *
  *   sns_topic_name = "slack-event"
  * }
