@@ -49,8 +49,8 @@ resource "aws_cloudwatch_event_target" "main" {
   target_id = "send-to-sns"
   arn       = "${data.aws_sns_topic.main.arn}"
 
-  input_transformer = {
-    input_paths {
+  input_transformer {
+    input_paths = {
       title = "$.detail.title"
     }
 
