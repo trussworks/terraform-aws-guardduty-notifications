@@ -17,12 +17,11 @@ module "guardduty_notifications" {
 }
 ```
 
-
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
-| sns_topic_name | The name of the SNS topic to send AWS GuardDuty findings. | string | - | yes |
+| sns\_topic\_name | The name of the SNS topic to send AWS GuardDuty findings. | string | n/a | yes |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
