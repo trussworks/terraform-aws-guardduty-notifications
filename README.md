@@ -10,10 +10,12 @@ Creates the following resources:
 ## Usage
 
 ```hcl
-module "guardduty_notifications" {
-  source = "../../modules/aws-guardduty-notifications"
+module "guardduty-notifications" {
+  source  = "trussworks/guardduty-notifications/aws"
+  version = "1.0.2"
 
-  sns_topic_name = "slack-event"
+  sns_topic_name_slack = "slack-event"
+  sns_topic_name_pagerduty = "pagerduty-infra-alerts"
 }
 ```
 
@@ -21,7 +23,7 @@ module "guardduty_notifications" {
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
-| sns\_topic\_name | The name of the SNS topic to send AWS GuardDuty findings. | string | n/a | yes |
+| sns\_topic\_name\_pagerduty | The name of the PagerDuty SNS topic to send AWS GuardDuty findings. | string | n/a | yes |
+| sns\_topic\_name\_slack | The name of the Slack SNS topic to send AWS GuardDuty findings. | string | n/a | yes |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
-

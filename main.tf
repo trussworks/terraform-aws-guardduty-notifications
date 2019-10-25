@@ -10,10 +10,12 @@
  * ## Usage
  *
  * ```hcl
- * module "guardduty_notifications" {
- *   source = "../../modules/aws-guardduty-notifications"
+ * module "guardduty-notifications" {
+ *   source  = "trussworks/guardduty-notifications/aws"
+ *   version = "1.0.2"
  *
- *   sns_topic_name = "slack-event"
+ *   sns_topic_name_slack = "slack-event"
+ *   sns_topic_name_pagerduty = "pagerduty-infra-alerts"
  * }
  * ```
  */
@@ -22,8 +24,12 @@
 # SNS
 #
 
-data "aws_sns_topic" "main" {
-  name = "${var.sns_topic_name}"
+data "aws_sns_topic" "slack" {
+  name = "${var.sns_topic_name_slack}"
+}
+
+data "aws_sns_topic" "pagerduty" {
+  name = "${var.sns_topic_name_pagerduty}"
 }
 
 #
@@ -44,16 +50,27 @@ resource "aws_cloudwatch_event_rule" "main" {
   event_pattern = "${file("${path.module}/event-pattern.json")}"
 }
 
-resource "aws_cloudwatch_event_target" "main" {
+# More details about the response syntax can be found here:
+# https://docs.aws.amazon.com/guardduty/latest/ug/get-findings.html#get-findings-response-syntax
+resource "aws_cloudwatch_event_target" "slack" {
   rule      = "${aws_cloudwatch_event_rule.main.name}"
-  target_id = "send-to-sns"
-  arn       = "${data.aws_sns_topic.main.arn}"
+  target_id = "send-to-sns-slack"
+  arn       = "${data.aws_sns_topic.slack.arn}"
 
-  input_transformer {
-    input_paths = {
-      title = "$.detail.title"
+  input_transformer = {
+    input_paths {
+      title       = "$.detail.title"
+      description = "$.detail.description"
+      eventTime   = "$.detail.service.eventFirstSeen"
+      region      = "$.detail.region"
     }
 
-    input_template = "\"GuardDuty finding: <title>\""
+    input_template = "\"GuardDuty finding in <region> first seen at <eventTime>: <title> <description>\""
   }
+}
+
+resource "aws_cloudwatch_event_target" "pagerduty" {
+  rule      = "${aws_cloudwatch_event_rule.main.name}"
+  target_id = "send-to-sns-pagerduty"
+  arn       = "${data.aws_sns_topic.pagerduty.arn}"
 }
