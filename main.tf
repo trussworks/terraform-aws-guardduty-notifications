@@ -57,8 +57,8 @@ resource "aws_cloudwatch_event_target" "slack" {
   target_id = "send-to-sns-slack"
   arn       = "${data.aws_sns_topic.slack.arn}"
 
-  input_transformer = {
-    input_paths {
+  input_transformer {
+    input_paths = {
       title       = "$.detail.title"
       description = "$.detail.description"
       eventTime   = "$.detail.service.eventFirstSeen"
