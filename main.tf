@@ -43,7 +43,7 @@ resource "aws_cloudwatch_event_rule" "main" {
 resource "aws_cloudwatch_event_target" "slack" {
   rule      = aws_cloudwatch_event_rule.main.name
   target_id = "send-to-sns-slack"
-  arn       = var.sns_topic_slack.arn
+  arn       = var.sns_topic_name_slack.arn
 
   input_transformer {
     input_paths = {
@@ -60,6 +60,6 @@ resource "aws_cloudwatch_event_target" "slack" {
 resource "aws_cloudwatch_event_target" "pagerduty" {
   rule      = aws_cloudwatch_event_rule.main.name
   target_id = "send-to-sns-pagerduty"
-  arn       = var.sns_topic_pagerduty.arn
+  arn       = var.sns_topic_name_pagerduty.arn
 }
 
