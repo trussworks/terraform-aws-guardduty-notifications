@@ -21,18 +21,6 @@
  */
 
 #
-# SNS
-#
-
-data "aws_sns_topic" "slack" {
-  name = "${var.sns_topic_name_slack}"
-}
-
-data "aws_sns_topic" "pagerduty" {
-  name = "${var.sns_topic_name_pagerduty}"
-}
-
-#
 # GuardDuty
 #
 
@@ -47,15 +35,15 @@ resource "aws_guardduty_detector" "main" {
 resource "aws_cloudwatch_event_rule" "main" {
   name          = "guardduty-finding-events"
   description   = "AWS GuardDuty event findings"
-  event_pattern = "${file("${path.module}/event-pattern.json")}"
+  event_pattern = file("${path.module}/event-pattern.json")
 }
 
 # More details about the response syntax can be found here:
 # https://docs.aws.amazon.com/guardduty/latest/ug/get-findings.html#get-findings-response-syntax
 resource "aws_cloudwatch_event_target" "slack" {
-  rule      = "${aws_cloudwatch_event_rule.main.name}"
+  rule      = aws_cloudwatch_event_rule.main.name
   target_id = "send-to-sns-slack"
-  arn       = "${data.aws_sns_topic.slack.arn}"
+  arn       = var.sns_topic_name_slack.arn
 
   input_transformer {
     input_paths = {
@@ -70,7 +58,8 @@ resource "aws_cloudwatch_event_target" "slack" {
 }
 
 resource "aws_cloudwatch_event_target" "pagerduty" {
-  rule      = "${aws_cloudwatch_event_rule.main.name}"
+  rule      = aws_cloudwatch_event_rule.main.name
   target_id = "send-to-sns-pagerduty"
-  arn       = "${data.aws_sns_topic.pagerduty.arn}"
+  arn       = var.sns_topic_name_pagerduty.arn
 }
+
