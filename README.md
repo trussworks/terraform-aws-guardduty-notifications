@@ -6,13 +6,7 @@ Creates the following resources:
 * CloudWatch event rule to filter GuardDuty Findings
 * CloudWatch event target to send to SNS topic formatted as `GuardDuty finding: <title>`
 
-## Terraform Versions
 
-Terraform 0.12. Pin module version to ~> 2.0. Submit pull-requests to master branch.
-
-Terraform 0.11. Pin module version to ~> 1.0. Submit pull-requests to terraform011 branch.
-
-<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Usage
 
 ```hcl
@@ -25,6 +19,14 @@ module "guardduty-notifications" {
 }
 ```
 
+
+## Terraform Versions
+
+Terraform 0.12. Pin module version to ~> 2.0. Submit pull-requests to master branch.
+
+Terraform 0.11. Pin module version to ~> 1.0. Submit pull-requests to terraform011 branch.
+
+<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Providers
 
 | Name | Version |

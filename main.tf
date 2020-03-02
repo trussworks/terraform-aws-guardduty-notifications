@@ -1,17 +1,3 @@
-/**
- * ## Usage
- *
- * ```hcl
- * module "guardduty-notifications" {
- *   source  = "trussworks/guardduty-notifications/aws"
- *   version = "2.1.0"
- *
- *   sns_topic_name_slack = "slack-event"
- *   sns_topic_name_pagerduty = "pagerduty-infra-alerts"
- * }
- * ```
- */
-
 #
 # GuardDuty
 #
