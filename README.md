@@ -6,11 +6,6 @@ Creates the following resources:
 * CloudWatch event rule to filter GuardDuty Findings
 * CloudWatch event target to send to SNS topic formatted as `GuardDuty finding: <title>`
 
-## Terraform Versions
-
-Terraform 0.12. Pin module version to ~> 2.0. Submit pull-requests to master branch.
-
-Terraform 0.11. Pin module version to ~> 1.0. Submit pull-requests to terraform011 branch.
 
 ## Usage
 
@@ -24,13 +19,30 @@ module "guardduty-notifications" {
 }
 ```
 
+
+## Terraform Versions
+
+Terraform 0.12. Pin module version to ~> 2.0. Submit pull-requests to master branch.
+
+Terraform 0.11. Pin module version to ~> 1.0. Submit pull-requests to terraform011 branch.
+
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+## Providers
+
+| Name | Version |
+|------|---------|
+| aws | n/a |
+
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|:----:|:-----:|:-----:|
-| sns\_topic\_name\_pagerduty | PagerDuty SNS Topic Object. | object | n/a | yes |
-| sns\_topic\_name\_slack | Slack SNS Topic Object. | object | n/a | yes |
+|------|-------------|------|---------|:-----:|
+| sns\_topic\_name\_pagerduty | PagerDuty SNS Topic Object. | `object({ arn = string, name = string })` | n/a | yes |
+| sns\_topic\_name\_slack | Slack SNS Topic Object. | `object({ arn = string, name = string })` | n/a | yes |
+
+## Outputs
+
+No output.
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 

@@ -1,25 +1,3 @@
-/**
- * Enable AWS GuardDuty and configures any findings to be sent to and SNS topic.
- *
- * Creates the following resources:
- *
- * * GuardDuty detector to enable GuardDuty
- * * CloudWatch event rule to filter GuardDuty Findings
- * * CloudWatch event target to send to SNS topic formatted as `GuardDuty finding: <title>`
- *
- * ## Usage
- *
- * ```hcl
- * module "guardduty-notifications" {
- *   source  = "trussworks/guardduty-notifications/aws"
- *   version = "2.1.0"
- *
- *   sns_topic_name_slack = "slack-event"
- *   sns_topic_name_pagerduty = "pagerduty-infra-alerts"
- * }
- * ```
- */
-
 #
 # GuardDuty
 #
