@@ -35,7 +35,7 @@ jobs:
           paths:
             - ~/.cache/pre-commit
       - save_cache:
-          key: go-mod-sources-v1-{{ checksum "go.sum" }}-{{ checksum "scripts/check-go-version" }}
+          key: go-mod-sources-v1-{{ checksum "go.sum" }}
           paths:
             - "~/go/pkg/mod"
       - store_test_results:
