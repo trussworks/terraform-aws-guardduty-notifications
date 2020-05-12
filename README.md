@@ -27,6 +27,12 @@ Terraform 0.12. Pin module version to ~> 2.0. Submit pull-requests to master bra
 Terraform 0.11. Pin module version to ~> 1.0. Submit pull-requests to terraform011 branch.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+## Requirements
+
+| Name | Version |
+|------|---------|
+| terraform | >= 0.12 |
+
 ## Providers
 
 | Name | Version |
@@ -36,7 +42,7 @@ Terraform 0.11. Pin module version to ~> 1.0. Submit pull-requests to terraform0
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:-----:|
+|------|-------------|------|---------|:--------:|
 | sns\_topic\_name\_pagerduty | PagerDuty SNS Topic Object. | `object({ arn = string, name = string })` | n/a | yes |
 | sns\_topic\_name\_slack | Slack SNS Topic Object. | `object({ arn = string, name = string })` | n/a | yes |
 
