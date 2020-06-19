@@ -2,9 +2,10 @@ Enable AWS GuardDuty and configures any findings to be sent to and SNS topic.
 
 Creates the following resources:
 
-* GuardDuty detector to enable GuardDuty
 * CloudWatch event rule to filter GuardDuty Findings
 * CloudWatch event target to send to SNS topic formatted as `GuardDuty finding: <title>`
+
+Optionally, it can also create the GuardDuty detector as well.
 
 
 ## Usage
@@ -14,8 +15,8 @@ module "guardduty-notifications" {
   source  = "trussworks/guardduty-notifications/aws"
   version = "2.1.0"
 
-  sns_topic_name_slack = "slack-event"
-  sns_topic_name_pagerduty = "pagerduty-infra-alerts"
+  sns_topic_slack = aws_sns_topic.slack
+  sns_topic_pagerduty = aws_sns_topic.pagerduty
 }
 ```
 
@@ -25,6 +26,24 @@ module "guardduty-notifications" {
 Terraform 0.12. Pin module version to ~> 2.0. Submit pull-requests to master branch.
 
 Terraform 0.11. Pin module version to ~> 1.0. Submit pull-requests to terraform011 branch.
+
+## Upgrade Notice v2.x.x to v3.x.x
+
+Version 3 makes a number of changes to the module that will break if it
+is updated in place. Specifically:
+
+* The GuardDuty detector is now an optional part of the module, and
+  defaults to off; if you are leaving the GuardDuty detector in this
+  module, you will need to add "create\_detector = true" as a parameter
+  and do a `terraform state mv` of the detector like so:
+
+  ```console
+  terraform state mv module.module_name.aws_guardduty_detector.main module.module_name.aws_guardduty_detector.main[0]
+  ```
+
+* The `sns_topic_name_slack` and `sns_topic_name_pagerduty` variables
+  have been renamed `sns_topic_slack` and `sns_topic_pagerduty` because
+  they are not actually names, but the actual SNS topic objects.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
@@ -43,8 +62,11 @@ Terraform 0.11. Pin module version to ~> 1.0. Submit pull-requests to terraform0
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| sns\_topic\_name\_pagerduty | PagerDuty SNS Topic Object. | `object({ arn = string, name = string })` | n/a | yes |
-| sns\_topic\_name\_slack | Slack SNS Topic Object. | `object({ arn = string, name = string })` | n/a | yes |
+| create\_detector | Create GuardDuty detector | `bool` | `false` | no |
+| pagerduty\_notifications | Enable PagerDuty notifications for GuardDuty findings | `bool` | `true` | no |
+| slack\_notifications | Enable Slack notifications for GuardDuty findings | `bool` | `true` | no |
+| sns\_topic\_pagerduty | PagerDuty SNS Topic Object. | `object({ arn = string, name = string })` | n/a | yes |
+| sns\_topic\_slack | Slack SNS Topic Object. | `object({ arn = string, name = string })` | n/a | yes |
 
 ## Outputs
 
