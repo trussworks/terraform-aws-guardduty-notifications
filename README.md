@@ -13,7 +13,7 @@ Optionally, it can also create the GuardDuty detector as well.
 ```hcl
 module "guardduty-notifications" {
   source  = "trussworks/guardduty-notifications/aws"
-  version = "2.1.0"
+  version = "3.0.0"
 
   sns_topic_slack = aws_sns_topic.slack
   sns_topic_pagerduty = aws_sns_topic.pagerduty
