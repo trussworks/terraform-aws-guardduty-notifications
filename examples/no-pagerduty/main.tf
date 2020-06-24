@@ -5,7 +5,7 @@ resource "aws_sns_topic" "slack" {
 module "guardduty-notifications" {
   source = "../../"
 
-  create_detector = true
+  create_detector = false
 
   pagerduty_notifications = false
 
