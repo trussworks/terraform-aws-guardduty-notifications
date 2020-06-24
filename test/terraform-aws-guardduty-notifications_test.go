@@ -11,8 +11,6 @@ import (
 )
 
 func TestTerraformAwsS3PrivateBucket(t *testing.T) {
-	t.Parallel()
-
 	tempTestFolder := test_structure.CopyTerraformFolderToTemp(t, "../", "examples/simple")
 
 	// Give this S3 Bucket a unique ID for a name tag so we can distinguish it from any other Buckets provisioned
@@ -44,8 +42,6 @@ func TestTerraformAwsS3PrivateBucket(t *testing.T) {
 }
 
 func TestTerraformNoPagerDuty(t *testing.T) {
-	t.Parallel()
-
 	tempTestFolder := test_structure.CopyTerraformFolderToTemp(t, "../", "examples/no-pagerduty")
 
 	testName := fmt.Sprintf("terratest-aws-guardduty-notifications-%s", strings.ToLower(random.UniqueId()))
