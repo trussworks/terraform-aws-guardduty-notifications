@@ -19,9 +19,11 @@ variable "slack_notifications" {
 variable "sns_topic_slack" {
   description = "Slack SNS Topic Object."
   type        = object({ arn = string, name = string })
+  default     = { arn = "", name = "" }
 }
 
 variable "sns_topic_pagerduty" {
   description = "PagerDuty SNS Topic Object."
   type        = object({ arn = string, name = string })
+  default     = { arn = "", name = "" }
 }
