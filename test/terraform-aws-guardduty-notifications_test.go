@@ -11,8 +11,6 @@ import (
 )
 
 func TestTerraformAwsS3PrivateBucket(t *testing.T) {
-	t.Parallel()
-
 	tempTestFolder := test_structure.CopyTerraformFolderToTemp(t, "../", "examples/simple")
 
 	// Give this S3 Bucket a unique ID for a name tag so we can distinguish it from any other Buckets provisioned
@@ -40,5 +38,28 @@ func TestTerraformAwsS3PrivateBucket(t *testing.T) {
 	defer terraform.Destroy(t, terraformOptions)
 
 	// This will run `terraform init` and `terraform apply` and fail the test if there are any errors
+	terraform.InitAndApply(t, terraformOptions)
+}
+
+func TestTerraformNoPagerDuty(t *testing.T) {
+	tempTestFolder := test_structure.CopyTerraformFolderToTemp(t, "../", "examples/no-pagerduty")
+
+	testName := fmt.Sprintf("terratest-aws-guardduty-notifications-%s", strings.ToLower(random.UniqueId()))
+	awsRegion := "us-west-2"
+
+	terraformOptions := &terraform.Options{
+		TerraformDir: tempTestFolder,
+
+		Vars: map[string]interface{}{
+			"sns_topic_name_slack": fmt.Sprintf("slack-%s", testName),
+		},
+
+		EnvVars: map[string]string{
+			"AWS_DEFAULT_REGION": awsRegion,
+		},
+	}
+
+	defer terraform.Destroy(t, terraformOptions)
+
 	terraform.InitAndApply(t, terraformOptions)
 }

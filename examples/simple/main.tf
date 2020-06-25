@@ -10,7 +10,7 @@ resource "aws_sns_topic" "pagerduty" {
 module "guardduty-notifications" {
   source = "../../"
 
-  create_detector = true
+  create_detector = false
 
   sns_topic_slack     = aws_sns_topic.slack
   sns_topic_pagerduty = aws_sns_topic.pagerduty

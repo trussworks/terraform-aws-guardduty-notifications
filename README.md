@@ -65,8 +65,8 @@ is updated in place. Specifically:
 | create\_detector | Create GuardDuty detector | `bool` | `false` | no |
 | pagerduty\_notifications | Enable PagerDuty notifications for GuardDuty findings | `bool` | `true` | no |
 | slack\_notifications | Enable Slack notifications for GuardDuty findings | `bool` | `true` | no |
-| sns\_topic\_pagerduty | PagerDuty SNS Topic Object. | `object({ arn = string, name = string })` | n/a | yes |
-| sns\_topic\_slack | Slack SNS Topic Object. | `object({ arn = string, name = string })` | n/a | yes |
+| sns\_topic\_pagerduty | PagerDuty SNS Topic Object. | `object({ arn = string, name = string })` | <pre>{<br>  "arn": "",<br>  "name": ""<br>}</pre> | no |
+| sns\_topic\_slack | Slack SNS Topic Object. | `object({ arn = string, name = string })` | <pre>{<br>  "arn": "",<br>  "name": ""<br>}</pre> | no |
 
 ## Outputs
 
