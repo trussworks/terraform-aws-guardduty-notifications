@@ -50,7 +50,7 @@ is updated in place. Specifically:
 
 | Name | Version |
 |------|---------|
-| terraform | >= 0.12 |
+| terraform | ~> 0.12.0 |
 | aws | ~> 2.70 |
 
 ## Providers
