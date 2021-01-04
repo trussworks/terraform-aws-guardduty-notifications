@@ -23,11 +23,9 @@ module "guardduty-notifications" {
 
 ## Terraform Versions
 
-Terraform 0.13. Pin module version to ~> 4.0.0 Submit pull-requests to master branch.
+Terraform 0.13 or later. Pin module version to ~> 4.0.0 Submit pull-requests to master branch.
 
 Terraform 0.12. Pin module version to ~> 3.0.0 Submit pull-requests to master branch.
-
-Terraform 0.11. Pin module version to ~> 1.0. Submit pull-requests to terraform011 branch.
 
 ## Upgrade Notice v2.x.x to v3.x.x
 
@@ -52,14 +50,14 @@ is updated in place. Specifically:
 
 | Name | Version |
 |------|---------|
-| terraform | ~> 0.13.0 |
-| aws | ~> 3.0 |
+| terraform | >= 0.13.0 |
+| aws | >= 3.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| aws | ~> 3.0 |
+| aws | >= 3.0 |
 
 ## Inputs
 
