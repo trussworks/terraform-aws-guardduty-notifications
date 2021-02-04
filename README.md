@@ -13,7 +13,7 @@ Optionally, it can also create the GuardDuty detector as well.
 ```hcl
 module "guardduty-notifications" {
   source  = "trussworks/guardduty-notifications/aws"
-  version = "3.0.0"
+  version = "5.0.0"
 
   sns_topic_slack_arn     = aws_sns_topic.slack.arn
   sns_topic_pagerduty_arn = aws_sns_topic.pagerduty.arn
@@ -31,9 +31,9 @@ Terraform 0.12. Pin module version to ~> 3.0.0 Submit pull-requests to master br
 
 * The `sns_topic_slack` and `sns_topic_pagerduty` variables have been
   renamed to `sns_topic_slack_arn` and `sns_topic_pagerduty_arn`; they
-  are also taking arns as values, and not `aws_sns_topic` objects. We
+  are also taking ARNs as values, and not `aws_sns_topic` objects. We
   made this change to better handle the outputs of the `notify-slack`
-  Terraform module, which outputs names and arns, but not objects.
+  Terraform module, which outputs names and ARNs, but not objects.
 
 ## Upgrade Notice v2.x.x to v3.x.x
 
