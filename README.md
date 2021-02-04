@@ -15,17 +15,25 @@ module "guardduty-notifications" {
   source  = "trussworks/guardduty-notifications/aws"
   version = "3.0.0"
 
-  sns_topic_slack = aws_sns_topic.slack
-  sns_topic_pagerduty = aws_sns_topic.pagerduty
+  sns_topic_slack_arn     = aws_sns_topic.slack.arn
+  sns_topic_pagerduty_arn = aws_sns_topic.pagerduty.arn
 }
 ```
 
 
 ## Terraform Versions
 
-Terraform 0.13 or later. Pin module version to ~> 4.0.0 Submit pull-requests to master branch.
+Terraform 0.13 or later. Pin module version to ~> 5.0.0 Submit pull-requests to master branch.
 
 Terraform 0.12. Pin module version to ~> 3.0.0 Submit pull-requests to master branch.
+
+## Upgrade Notice v4.x.x to v5.x.x
+
+* The `sns_topic_slack` and `sns_topic_pagerduty` variables have been
+  renamed to `sns_topic_slack_arn` and `sns_topic_pagerduty_arn`; they
+  are also taking arns as values, and not `aws_sns_topic` objects. We
+  made this change to better handle the outputs of the `notify-slack`
+  Terraform module, which outputs names and arns, but not objects.
 
 ## Upgrade Notice v2.x.x to v3.x.x
 
