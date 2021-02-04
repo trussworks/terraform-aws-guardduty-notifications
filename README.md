@@ -13,19 +13,27 @@ Optionally, it can also create the GuardDuty detector as well.
 ```hcl
 module "guardduty-notifications" {
   source  = "trussworks/guardduty-notifications/aws"
-  version = "3.0.0"
+  version = "5.0.0"
 
-  sns_topic_slack = aws_sns_topic.slack
-  sns_topic_pagerduty = aws_sns_topic.pagerduty
+  sns_topic_slack_arn     = aws_sns_topic.slack.arn
+  sns_topic_pagerduty_arn = aws_sns_topic.pagerduty.arn
 }
 ```
 
 
 ## Terraform Versions
 
-Terraform 0.13 or later. Pin module version to ~> 4.0.0 Submit pull-requests to master branch.
+Terraform 0.13 or later. Pin module version to ~> 5.0.0 Submit pull-requests to master branch.
 
 Terraform 0.12. Pin module version to ~> 3.0.0 Submit pull-requests to master branch.
+
+## Upgrade Notice v4.x.x to v5.x.x
+
+* The `sns_topic_slack` and `sns_topic_pagerduty` variables have been
+  renamed to `sns_topic_slack_arn` and `sns_topic_pagerduty_arn`; they
+  are also taking ARNs as values, and not `aws_sns_topic` objects. We
+  made this change to better handle the outputs of the `notify-slack`
+  Terraform module, which outputs names and ARNs, but not objects.
 
 ## Upgrade Notice v2.x.x to v3.x.x
 
@@ -66,8 +74,8 @@ is updated in place. Specifically:
 | create\_detector | Create GuardDuty detector | `bool` | `false` | no |
 | pagerduty\_notifications | Enable PagerDuty notifications for GuardDuty findings | `bool` | `true` | no |
 | slack\_notifications | Enable Slack notifications for GuardDuty findings | `bool` | `true` | no |
-| sns\_topic\_pagerduty | PagerDuty SNS Topic Object. | `object({ arn = string, name = string })` | <pre>{<br>  "arn": "",<br>  "name": ""<br>}</pre> | no |
-| sns\_topic\_slack | Slack SNS Topic Object. | `object({ arn = string, name = string })` | <pre>{<br>  "arn": "",<br>  "name": ""<br>}</pre> | no |
+| sns\_topic\_pagerduty\_arn | PagerDuty SNS Topic ARN | `string` | `""` | no |
+| sns\_topic\_slack\_arn | Slack SNS Topic ARN | `string` | `""` | no |
 
 ## Outputs
 

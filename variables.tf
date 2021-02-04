@@ -16,14 +16,14 @@ variable "slack_notifications" {
   default     = true
 }
 
-variable "sns_topic_slack" {
-  description = "Slack SNS Topic Object."
-  type        = object({ arn = string, name = string })
-  default     = { arn = "", name = "" }
+variable "sns_topic_slack_arn" {
+  description = "Slack SNS Topic ARN"
+  type        = string
+  default     = ""
 }
 
-variable "sns_topic_pagerduty" {
-  description = "PagerDuty SNS Topic Object."
-  type        = object({ arn = string, name = string })
-  default     = { arn = "", name = "" }
+variable "sns_topic_pagerduty_arn" {
+  description = "PagerDuty SNS Topic ARN"
+  type        = string
+  default     = ""
 }
