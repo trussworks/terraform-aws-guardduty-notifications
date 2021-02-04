@@ -9,5 +9,5 @@ module "guardduty-notifications" {
 
   pagerduty_notifications = false
 
-  sns_topic_slack = aws_sns_topic.slack
+  sns_topic_slack_arn = aws_sns_topic.slack.arn
 }

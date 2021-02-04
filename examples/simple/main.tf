@@ -12,6 +12,6 @@ module "guardduty-notifications" {
 
   create_detector = false
 
-  sns_topic_slack     = aws_sns_topic.slack
-  sns_topic_pagerduty = aws_sns_topic.pagerduty
+  sns_topic_slack_arn     = aws_sns_topic.slack.arn
+  sns_topic_pagerduty_arn = aws_sns_topic.pagerduty.arn
 }
