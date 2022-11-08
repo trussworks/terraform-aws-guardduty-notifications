@@ -46,4 +46,3 @@ resource "aws_cloudwatch_event_target" "pagerduty" {
   target_id = "send-to-sns-pagerduty"
   arn       = var.sns_topic_pagerduty_arn
 }
-
