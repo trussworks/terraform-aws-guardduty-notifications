@@ -51,7 +51,7 @@ is updated in place. Specifically:
   have been renamed `sns_topic_slack` and `sns_topic_pagerduty` because
   they are not actually names, but the actual SNS topic objects.
 
-<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 | Name | Version |
@@ -91,7 +91,7 @@ No modules.
 ## Outputs
 
 No outputs.
-<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- END_TF_DOCS -->
 
 ## Developer Setup
 
