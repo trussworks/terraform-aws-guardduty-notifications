@@ -52,19 +52,18 @@ is updated in place. Specifically:
   they are not actually names, but the actual SNS topic objects.
 
 <!-- BEGIN_TF_DOCS -->
-
 ## Requirements
 
-| Name      | Version   |
-| --------- | --------- |
+| Name | Version |
+|------|---------|
 | terraform | >= 0.13.0 |
-| aws       | >= 3.0    |
+| aws | >= 3.0 |
 
 ## Providers
 
 | Name | Version |
-| ---- | ------- |
-| aws  | >= 3.0  |
+|------|---------|
+| aws | >= 3.0 |
 
 ## Modules
 
@@ -72,28 +71,27 @@ No modules.
 
 ## Resources
 
-| Name                                                                                                                                         | Type     |
-| -------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| [aws_cloudwatch_event_rule.main](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_event_rule)          | resource |
+| Name | Type |
+|------|------|
+| [aws_cloudwatch_event_rule.main](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_event_rule) | resource |
 | [aws_cloudwatch_event_target.pagerduty](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_event_target) | resource |
-| [aws_cloudwatch_event_target.slack](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_event_target)     | resource |
-| [aws_guardduty_detector.main](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/guardduty_detector)                | resource |
+| [aws_cloudwatch_event_target.slack](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_event_target) | resource |
+| [aws_guardduty_detector.main](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/guardduty_detector) | resource |
 
 ## Inputs
 
-| Name                    | Description                                           | Type     | Default | Required |
-| ----------------------- | ----------------------------------------------------- | -------- | ------- | :------: |
-| create_detector         | Create GuardDuty detector                             | `bool`   | `false` |    no    |
-| pagerduty_notifications | Enable PagerDuty notifications for GuardDuty findings | `bool`   | `true`  |    no    |
-| slack_notifications     | Enable Slack notifications for GuardDuty findings     | `bool`   | `true`  |    no    |
-| sns_topic_pagerduty_arn | PagerDuty SNS Topic ARN                               | `string` | `""`    |    no    |
-| sns_topic_slack_arn     | Slack SNS Topic ARN                                   | `string` | `""`    |    no    |
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| create\_detector | Create GuardDuty detector | `bool` | `false` | no |
+| pagerduty\_notifications | Enable PagerDuty notifications for GuardDuty findings | `bool` | `true` | no |
+| slack\_notifications | Enable Slack notifications for GuardDuty findings | `bool` | `true` | no |
+| sns\_topic\_pagerduty\_arn | PagerDuty SNS Topic ARN | `string` | `""` | no |
+| sns\_topic\_slack\_arn | Slack SNS Topic ARN | `string` | `""` | no |
 
 ## Outputs
 
 No outputs.
-
-<!-- BEGIN_TF_DOCS -->
+<!-- END_TF_DOCS -->
 
 ## Developer Setup
 
