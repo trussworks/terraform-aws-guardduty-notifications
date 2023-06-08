@@ -19,12 +19,6 @@ module "guardduty-notifications" {
 }
 ```
 
-## Terraform Versions
-
-Terraform 0.13 or later. Pin module version to ~> 5.0.0 Submit pull-requests to master branch.
-
-Terraform 0.12. Pin module version to ~> 3.0.0 Submit pull-requests to master branch.
-
 ## Upgrade Notice v4.x.x to v5.x.x
 
 - The `sns_topic_slack` and `sns_topic_pagerduty` variables have been
@@ -56,7 +50,7 @@ is updated in place. Specifically:
 
 | Name | Version |
 |------|---------|
-| terraform | >= 0.13.0 |
+| terraform | >= 1.0 |
 | aws | >= 3.0 |
 
 ## Providers
